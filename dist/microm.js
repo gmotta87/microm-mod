@@ -2301,8 +2301,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	// animation-frame used in WebM recording
 
 	/*jshint -W079 */
-	if(typeof window !== undefined)
-	var requestAnimationFrame = window.requestAnimationFrame;
+	var requestAnimationFrame = typeof window !== undefined ? window.requestAnimationFrame : undefined;
 	if (typeof requestAnimationFrame === 'undefined') {
 	    if (typeof webkitRequestAnimationFrame !== 'undefined') {
 	        /*global requestAnimationFrame:true */
@@ -2316,7 +2315,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	/*jshint -W079 */
-	var cancelAnimationFrame = window.cancelAnimationFrame;
+	var cancelAnimationFrame = typeof window !== undefined ? window.cancelAnimationFrame : undefined;
 	if (typeof cancelAnimationFrame === 'undefined') {
 	    if (typeof webkitCancelAnimationFrame !== 'undefined') {
 	        /*global cancelAnimationFrame:true */
@@ -2330,7 +2329,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	// WebAudio API representer
-	var AudioContext = window.AudioContext;
+	var AudioContext = typeof window !== undefine? window.AudioContext:undefined;
 
 	if (typeof AudioContext === 'undefined') {
 	    if (typeof webkitAudioContext !== 'undefined') {
@@ -2345,7 +2344,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	/*jshint -W079 */
-	var URL = window.URL;
+	var URL = typeof window !== undefined?window.URL:undefined;
 
 	if (typeof URL === 'undefined' && typeof webkitURL !== 'undefined') {
 	    /*global URL:true */
@@ -2370,7 +2369,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var isOpera = !!window.opera || navigator.userAgent.indexOf('OPR/') !== -1;
 	var isChrome = !isOpera && !isEdge && !!navigator.webkitGetUserMedia;
 
-	var MediaStream = window.MediaStream;
+	var MediaStream = typeof window !== undefined? window.MediaStream:undefined;
 
 	if (typeof MediaStream === 'undefined' && typeof webkitMediaStream !== 'undefined') {
 	    MediaStream = webkitMediaStream;
@@ -3375,7 +3374,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    var globalCanvas, globalContext, mediaStreamRecorder;
 
-	    if (isCanvasSupportsStreamCapturing) {
+	    if (isCanvasSupportsStreamCapturing && window) {
 	        if (!config.disableLogs) {
 	            console.debug('Your browser supports both MediRecorder API and canvas.captureStream!');
 	        }
